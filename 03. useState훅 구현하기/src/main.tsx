@@ -1,4 +1,4 @@
-import React from "@/lib/React";
+import React from "@React";
 import App from "./App";
 
 const root = document.querySelector("#root");

@@ -20,11 +20,13 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@/*": ["./*"],
-      "@core/*": ["./lib/React"],
+      // "@/*": ["./*"],
+      "@React": ["./lib/React"],
+      "@core/*": ["./lib/React/*"],
+      "@src/*": ["./src/*"],
     },
     
     "jsx": "react",
   },
-  "include": ["src", "types"]
+  "include": ["src", "types", "lib"]
 }

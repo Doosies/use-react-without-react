@@ -1,5 +1,4 @@
-import App from "@src/App";
-import React from ".";
+import { render } from "./render";
 
 type SetStateFunction<T> = (newState: T) => T;
 type SetState<T> = (newState: T | SetStateFunction<T>) => void;
@@ -13,7 +12,7 @@ function isSetStateFunction<T>(
 const state: unknown[] = [];
 let stateIdx = 0;
 
-function useState<T>(initialState: T): [T, SetState<T>] {
+export function useState<T>(initialState: T): [T, SetState<T>] {
   let nowIdx = stateIdx++;
 
   // 만약 초기화를 진행한적이 없다면 초기화
@@ -28,17 +27,13 @@ function useState<T>(initialState: T): [T, SetState<T>] {
     } else {
       state[nowIdx] = newState;
     }
-
-    // 다음에 리렌더링 될 때 올바른 상태를 가리키도록 인덱스를 초기화
-    stateIdx = 0;
-    // 리렌더링
-    const root = document.querySelector("#root");
-    const dom = React.createDOM(<App />);
-    root?.replaceChildren(dom);
+    render();
   };
 
   // state, setState를 반환
   return [state[nowIdx] as T, setState as SetState<T>];
 }
 
-export default useState;
+export function resetStateIdx() {
+  stateIdx = 0;
+}

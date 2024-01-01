@@ -1,5 +1,4 @@
-import React from "@React";
-import useState from "../lib/React/useState";
+import React, { useEffect, useState } from "@React";
 
 function Counter1() {
   const [counter, setCounter] = useState(0);
@@ -26,6 +25,16 @@ function Counter2() {
 function App() {
   const [isCounter1Show, setIsCounter1Show] = useState(true);
   const toggleCounter = () => setIsCounter1Show((prev) => !prev);
+
+  useEffect(() => {
+    console.log("every render");
+  });
+  useEffect(() => {
+    console.log("only first render");
+  }, []);
+  useEffect(() => {
+    console.log("only first render and counter1 change");
+  }, [isCounter1Show]);
 
   return (
     <div>

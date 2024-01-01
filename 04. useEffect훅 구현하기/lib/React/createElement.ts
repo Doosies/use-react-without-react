@@ -5,7 +5,7 @@ interface VirtualDomNode {
   children: VirtualDomNode[];
 }
 
-export default function createElement(
+export function createElement(
   tag: string | Function,
   props: { [key: string]: unknown },
   ...children: VirtualDomNode[]

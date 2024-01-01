@@ -19,7 +19,7 @@ function checkVirtualDomTextNode(
   );
 }
 
-export default function createDOM(element: VirtualDom): RealDom | Text {
+export function createDOM(element: VirtualDom): RealDom | Text {
   // 현재 element가 textNode인지 확인한다.
   if (checkVirtualDomTextNode(element)) {
     //textNode일 경우 현재 element를 그대로 반환한다.

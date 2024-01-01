@@ -1,7 +1,11 @@
-import React from "@React";
-import App from "./App";
+// import React from "@React";
+// import App from "./App";
 
-const root = document.querySelector("#root");
-const dom = React.createDOM(<App />);
+import { render } from "@React";
 
-root?.appendChild(dom);
+// const root = document.querySelector("#root");
+// const dom = React.createDOM(<App />);
+
+// root?.appendChild(dom);
+
+render();

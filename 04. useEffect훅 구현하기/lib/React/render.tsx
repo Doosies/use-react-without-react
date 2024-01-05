@@ -2,10 +2,12 @@ import React from "@React";
 import App from "@src/App";
 import { resetStateIdx } from "./useState";
 import { resetEffectIdx, runSideEffects } from "./useEffect";
+import { resetRefIdx } from "./useRef";
 
 export function render() {
   resetStateIdx();
   resetEffectIdx();
+  resetRefIdx();
 
   // 리렌더링
   const root = document.querySelector("#root");

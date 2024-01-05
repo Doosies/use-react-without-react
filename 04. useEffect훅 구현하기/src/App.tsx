@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "@React";
+import { useRef } from "@core/useRef";
 
 function Counter1() {
   const [counter, setCounter] = useState(0);
@@ -23,23 +24,15 @@ function Counter2() {
   );
 }
 function App() {
-  const [isCounter1Show, setIsCounter1Show] = useState(true);
-  const toggleCounter = () => setIsCounter1Show((prev) => !prev);
+  const divRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    console.log("every render");
-  });
-  useEffect(() => {
-    console.log("only first render");
-  }, []);
-  useEffect(() => {
-    console.log("only first render and counter1 change");
-  }, [isCounter1Show]);
+  const changeColor = () => {
+    divRef.current.style.backgroundColor = "blue";
+  };
 
   return (
-    <div>
-      <button onclick={toggleCounter}>카운터 토글</button>
-      {isCounter1Show ? <Counter1 /> : <Counter2 />}
+    <div ref={divRef} style="padding: 10px; background-color: red;">
+      <button onclick={changeColor}>색상을 바꾸는 버튼!</button>
     </div>
   );
 }

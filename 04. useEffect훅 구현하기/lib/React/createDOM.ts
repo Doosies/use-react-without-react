@@ -32,6 +32,10 @@ export function createDOM(element: VirtualDom): RealDom | Text {
   // props가 존재 할 경우 실제 element에 이를 추가한다.
   if (element.props) {
     Object.keys(element.props).forEach((key) => {
+      // key에 ref가 존재할 경우 ref.current에 실제 dom을 할당한다.
+      if (key === "ref") {
+        element.props[key].current = dom;
+      }
       (dom as any)[key] = element.props[key];
     });
   }
